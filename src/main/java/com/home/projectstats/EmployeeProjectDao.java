@@ -39,7 +39,8 @@ public class EmployeeProjectDao {
             JOIN employee_project b ON a.project_id = b.project_id
             WHERE a.employee_id < b.employee_id
             AND (a.from_date, a.to_date) OVERLAPS (b.from_date, b.to_date)
-            GROUP BY a.employee_id, b.employee_id;
+            GROUP BY a.employee_id, b.employee_id
+            ORDER BY total_overlap DESC;
         """;
 
         return jdbcTemplate.query(query, new EmployeeProjectRowMapper());

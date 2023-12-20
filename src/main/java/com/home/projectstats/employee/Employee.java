@@ -1,4 +1,4 @@
-package com.home.projectstats;
+package com.home.projectstats.employee;
 
 import lombok.Getter;
 

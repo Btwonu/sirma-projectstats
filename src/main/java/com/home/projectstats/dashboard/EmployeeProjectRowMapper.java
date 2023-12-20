@@ -1,5 +1,6 @@
-package com.home.projectstats;
+package com.home.projectstats.dashboard;
 
+import com.home.projectstats.employee.Employee;
 import org.springframework.jdbc.core.RowMapper;
 
 import java.sql.Array;

@@ -1,4 +1,6 @@
-package com.home.projectstats;
+package com.home.projectstats.dashboard;
+
+import com.home.projectstats.employee.Employee;
 
 import java.util.Map;
 

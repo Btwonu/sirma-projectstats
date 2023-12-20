@@ -1,4 +1,4 @@
-package com.home.projectstats;
+package com.home.projectstats.dashboard;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,7 +15,7 @@ public class DashboardController {
         this.dashboardService = dashboardService;
     }
 
-    @RequestMapping("/")
+    @RequestMapping("")
     public String index(Model model) {
         List<EmployeePairDto> employeePairs = dashboardService.getEmployeePairs();
 

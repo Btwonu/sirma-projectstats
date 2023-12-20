@@ -1,4 +1,4 @@
-package com.home.projectstats;
+package com.home.projectstats.dashboard;
 
 import org.springframework.stereotype.Service;
 

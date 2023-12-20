@@ -1,4 +1,4 @@
-package com.home.projectstats;
+package com.home.projectstats.project;
 
 public class Project {
     private long id;

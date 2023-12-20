@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <title>Employee</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}" />
+</head>
+
+<body>
+    <h1>Employees</h1>
+
+    <ul>
+        <li th:each="employee : ${employees}">
+            <a th:href="@{ ${ '/employees/' + employee.id } }">
+                <span>ID:</span>
+
+                <strong th:text="${employee.id}"></strong>
+            </a>
+        </li>
+    </ul>
+</body>
+</html>

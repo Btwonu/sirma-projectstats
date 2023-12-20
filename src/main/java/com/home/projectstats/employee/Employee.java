@@ -10,7 +10,7 @@ import java.util.HashMap;
 public class Employee {
     private final long id;
 
-    Employee(long id) {
+    public Employee(long id) {
         this.id = id;
     }
 

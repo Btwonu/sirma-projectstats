@@ -12,24 +12,24 @@
     <h1>Top Pair Programmers</h1>
 
     <div class="pairs">
-        <div class="pairs__item" th:each="pair : ${employeePairs}">
+        <div class="pairs__item" th:each="pair : ${ employeePairs }">
             <div class="employees">
                 <div class="employees__item">
                     <div class="employee">
-                        <a th:href="@{/employees/${pair.employeeA.id}}" class="employee__link">
+                        <a th:href="@{ ${ '/employees/' + pair.employeeA.id } }" class="employee__link">
                             <span>ID:</span>
 
-                            <strong th:text="${pair.employeeA.id}"></strong>
+                            <strong th:text="${ pair.employeeA.id }"></strong>
                         </a><!-- /.employee__link -->
                     </div><!-- /.employee -->
                 </div><!-- /.employees__item -->
 
                 <div class="employees__item">
                     <div class="employee">
-                        <a th:href="@{/employees/${pair.employeeB.id}}" class="employee__link">
+                        <a th:href="@{ ${ '/employees/' + pair.employeeB.id } }" class="employee__link">
                             <span>ID:</span>
 
-                            <strong th:text="${pair.employeeB.id}"></strong>
+                            <strong th:text="${ pair.employeeB.id }"></strong>
                         </a><!-- /.employee__link -->
                     </div><!-- /.employee -->
                 </div><!-- /.employees__item -->
@@ -37,22 +37,22 @@
                 <div class="employees__total">
                     <span>Days worked together:</span>
 
-                    <strong th:text="${pair.totalDaysOverlap}"></strong>
+                    <strong th:text="${ pair.totalDaysOverlap }"></strong>
                 </div><!-- /.employees__total -->
             </div><!-- /.employees -->
 
             <div class="projects">
                 <h2>Projects Worked Together</h2>
 
-                <div class="projects__item" th:each="project : ${pair.overlappingProjects}">
+                <div class="projects__item" th:each="project : ${ pair.overlappingProjects }">
                     <div class="project">
                         <span>Project ID:</span>
 
-                        <strong class="project__id" th:text="${project.key}"></strong><!-- /.project__id -->
+                        <strong class="project__id" th:text="${ project.key }"></strong><!-- /.project__id -->
 
                         <span>Time worked on project:</span>
 
-                        <strong class="project__days" th:text="${project.value}"></strong><!-- /.project__days -->
+                        <strong class="project__days" th:text="${ project.value }"></strong><!-- /.project__days -->
                     </div><!-- /.project -->
                 </div><!-- /.projects__item -->
             </div><!-- /.projects -->

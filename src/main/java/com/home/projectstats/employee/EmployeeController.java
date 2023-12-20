@@ -1,5 +1,7 @@
 package com.home.projectstats.employee;
 
+import com.home.projectstats.project.Project;
+import com.home.projectstats.project.ProjectService;
 import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,8 +15,12 @@ import java.util.Optional;
 @RequestMapping("/employees")
 public class EmployeeController {
     private final EmployeeService employeeService;
+    private final ProjectService projectService;
 
-    public EmployeeController(EmployeeService employeeService) { this.employeeService = employeeService; }
+    public EmployeeController(EmployeeService employeeService, ProjectService projectService) {
+        this.employeeService = employeeService;
+        this.projectService = projectService;
+    }
 
     @RequestMapping({ "", "/" })
     public String index(Model model) {
@@ -26,9 +32,11 @@ public class EmployeeController {
     @RequestMapping("/{id}")
     public String getEmployee(@PathVariable long id, Model model, HttpServletResponse response) {
         Optional<Employee> optional = employeeService.getOneEmployee(id);
+        List<Project> employeeProjects = projectService.getEmployeeProjects(id);
 
         if (optional.isPresent()) {
             model.addAttribute("employee", optional.get());
+            model.addAttribute("projects", employeeProjects);
             return "employee";
         } else {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);

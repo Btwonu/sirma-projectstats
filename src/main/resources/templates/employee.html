@@ -11,5 +11,13 @@
         <h1>Employee</h1>
 
         <p th:text="${employee.id}"></p>
+
+        <ul>
+            <li th:each="project : ${projects}">
+                <span>Project ID:</span>
+
+                <strong th:text="${project.id}"></strong>
+            </li>
+        </ul>
     </body>
 </html>

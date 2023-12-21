@@ -7,7 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 @Component
-public class ProjectMapper implements RowMapper<Project> {
+public class ProjectRowMapper implements RowMapper<Project> {
     @Override
     public Project mapRow(ResultSet resultSet, int rowNum) throws SQLException {
         return new Project(

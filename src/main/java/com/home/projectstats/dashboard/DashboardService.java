@@ -2,6 +2,7 @@ package com.home.projectstats.dashboard;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -14,5 +15,9 @@ public class DashboardService {
 
     public List<EmployeePairDto> getEmployeePairs() {
         return employeeProjectDao.getOverlappingProjects();
+    }
+
+    public int createOneEmployeeProject(long employeeId, long projectId, LocalDate from, LocalDate to) {
+        return employeeProjectDao.createOne(employeeId, projectId, from, to);
     }
 }

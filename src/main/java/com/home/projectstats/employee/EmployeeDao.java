@@ -34,7 +34,13 @@ public class EmployeeDao {
 
     public int createOne(long id) {
         String query = "INSERT INTO employee (id) VALUES (?)";
-        return jdbcTemplate.update(query, id);
+
+        try {
+            return jdbcTemplate.update(query, id);
+        } catch (Exception e) {
+            System.out.println("Duplicate row for employee");
+            return 0;
+        }
     }
 
     public void deleteOne(long id) {

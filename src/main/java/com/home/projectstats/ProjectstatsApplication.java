@@ -1,8 +1,5 @@
 package com.home.projectstats;
 
-import com.home.projectstats.dashboard.DashboardService;
-import com.home.projectstats.employee.EmployeeService;
-import com.home.projectstats.project.ProjectService;
 import com.home.projectstats.util.DataLoader;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

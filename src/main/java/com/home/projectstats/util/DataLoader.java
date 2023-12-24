@@ -32,6 +32,10 @@ public class DataLoader {
                 String from = line[2];
                 String to = line[3];
 
+                if (to.equals("NULL")) {
+                    to = LocalDate.now().toString();
+                }
+
                 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
                 LocalDate fromDate = null;

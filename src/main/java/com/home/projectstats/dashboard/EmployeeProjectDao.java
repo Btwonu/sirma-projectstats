@@ -54,20 +54,34 @@ public class EmployeeProjectDao {
 
     public int createOne(long employeeId, long projectId, LocalDate from, LocalDate to) {
         String query = """
-            INSERT INTO employee_project (employee_id, project_id, from_date, to_date)
-            VALUES (?, ?, ?, ?);
-        """;
+                    INSERT INTO employee_project (employee_id, project_id, from_date, to_date)
+                    SELECT ?, ?, ?, ?
+                    WHERE NOT EXISTS (
+                       SELECT 1
+                       FROM employee_project ep
+                       WHERE ep.employee_id = ?
+                         AND ep.project_id = ?
+                         AND (?, ?) OVERLAPS (ep.from_date, ep.to_date)
+                   )
+                """;
+
 
         try (Connection connection = Objects.requireNonNull(jdbcTemplate.getDataSource()).getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
 
-            preparedStatement.setLong(1, employeeId);
-            preparedStatement.setLong(2, projectId);
-            preparedStatement.setDate(3, Date.valueOf(from));
-            preparedStatement.setDate(4, Date.valueOf(to));
+            int i = 1;
+            preparedStatement.setLong(i++, employeeId);
+            preparedStatement.setLong(i++, projectId);
+            preparedStatement.setDate(i++, Date.valueOf(from));
+            preparedStatement.setDate(i++, Date.valueOf(to));
+            preparedStatement.setLong(i++, employeeId);
+            preparedStatement.setLong(i++, projectId);
+            preparedStatement.setDate(i++, Date.valueOf(from));
+            preparedStatement.setDate(i++, Date.valueOf(to));
 
             return preparedStatement.executeUpdate();
         } catch (PSQLException e) {
+            e.printStackTrace();
             System.out.println("Duplicate row for employee-project");
             return 0;
         } catch (SQLException e) {

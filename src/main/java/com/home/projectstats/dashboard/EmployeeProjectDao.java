@@ -14,11 +14,9 @@ import java.util.Objects;
 @Component
 public class EmployeeProjectDao {
     private final JdbcTemplate jdbcTemplate;
-    private final NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
     public EmployeeProjectDao(JdbcTemplate jdbcTemplate, NamedParameterJdbcTemplate namedParameterJdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
-        this.namedParameterJdbcTemplate = namedParameterJdbcTemplate;
     }
 
     public List<EmployeePairDto> getOverlappingProjects() {
@@ -70,7 +68,7 @@ public class EmployeeProjectDao {
 
             return preparedStatement.executeUpdate();
         } catch (PSQLException e) {
-            System.out.println("Duplicate row");
+            System.out.println("Duplicate row for employee-project");
             return 0;
         } catch (SQLException e) {
             throw new RuntimeException("Error while creating employee-project", e);

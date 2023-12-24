@@ -32,14 +32,13 @@ public class EmployeeDao {
         }
     }
 
-    public int createOne(long id) {
+    public int createOne(long id) throws RuntimeException {
         String query = "INSERT INTO employee (id) VALUES (?)";
 
         try {
             return jdbcTemplate.update(query, id);
         } catch (Exception e) {
-            System.out.println("Duplicate row for employee");
-            return 0;
+            throw new RuntimeException("Duplicate employee");
         }
     }
 

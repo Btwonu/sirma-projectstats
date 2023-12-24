@@ -47,7 +47,12 @@ public class DataLoader {
                     System.err.println("Error parsing date: " + e.getMessage());
                 }
 
-                employeeService.createOneEmployee(employeeId);
+                try {
+                    employeeService.createOneEmployee(employeeId);
+                } catch (Exception e) {
+                    System.out.println("Employee already exists");
+                }
+
                 projectService.createOneProject(projectId);
                 dashboardService.createOneEmployeeProject(employeeId, projectId, fromDate, toDate);
             }

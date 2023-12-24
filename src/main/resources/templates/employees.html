@@ -19,5 +19,12 @@
             </a>
         </li>
     </ul>
+
+    <form th:action="@{/employees}" th:object="${employee}" method="post">
+        <p th:if="${errorMessage}" th:text="${errorMessage}" class="error"></p>
+        <input type="text" name="id" placeholder="Employee ID" />
+
+        <input type="submit" value="Submit" />
+    </form>
 </body>
 </html>

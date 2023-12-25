@@ -122,3 +122,14 @@ Responsible for the data retrieved from the assotiation of our employees and pro
 #### ProjectDao
 
 #### EmployeeProjectDao
+
+## To do
+
+- Add tests
+- Propagate exceptions to front end
+- Add front end controls to create employees and projects
+  - Post form for `employee` creation
+  - Select for each `employee`, which will hold all of employee's `projects`
+  - Datepicker for `from` and `to` dates
+- Add styles
+- Add Thymeleaf partials for header/footer

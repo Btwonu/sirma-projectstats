@@ -21,7 +21,15 @@ public class EmployeeProjectRowMapper implements RowMapper<EmployeePairDto> {
         Integer[] overlappingDurationsArray = (Integer[]) overlappingDurations.getArray();
 
         for (int i = 0; i < overlappingProjectIdsArray.length; i++) {
-            overlappingProjects.put(overlappingProjectIdsArray[i], overlappingDurationsArray[i]);
+            Long projectId = overlappingProjectIdsArray[i];
+            Integer duration = overlappingDurationsArray[i];
+
+            if (overlappingProjects.containsKey(projectId)) {
+                overlappingProjects.put(projectId, overlappingProjects.get(projectId) + duration);
+                continue;
+            }
+
+            overlappingProjects.put(projectId, duration);
         }
 
         return new EmployeePairDto(
